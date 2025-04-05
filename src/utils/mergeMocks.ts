@@ -1,6 +1,7 @@
 import { mockEquipments } from "../data/mockEquipment";
 import { mockEquipmentPositionHistory } from "../data/mockEquipmentPositionHistory";
 import { mockEquipmentStateHistory } from "../data/mockEquipmentStateHistory";
+import { EquipmentStateName } from "../types/equipment";
 import { mockEquipmentModels } from "./../data/mockEquipmentModel";
 import { mockEquipmentState } from "./../data/mockEquipmentState";
 
@@ -22,9 +23,11 @@ export function getEquipmentsMerged() {
       id: eq.id,
       name: eq.name,
       model: model?.name || "Modelo Desconhecido",
-      state: state?.name || "Estado Desconhecido",
+      state: (state?.name as EquipmentStateName) ?? "Estado Desconhecido",
       color: state?.color || "#ccc",
-      position: lastPosition ? [lastPosition.lat, lastPosition.lon] : [0, 0],
+      position: lastPosition
+        ? ([lastPosition.lat, lastPosition.lon] as [number, number])
+        : ([0, 0] as [number, number]),
       hourlyEarnings: model?.hourlyEarnings || 0,
     };
   });

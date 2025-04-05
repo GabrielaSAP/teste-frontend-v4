@@ -1,23 +1,35 @@
+import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
-import CustomMarker, { StateName } from "./TooltipDetails";
+import EquipmentMarker from "./EquipmentMarker";
+import { Equipment } from "../../types/equipment";
 import "leaflet/dist/leaflet.css";
 
-const Map = () => {
+type MapProps = {
+  equipments: Equipment[];
+};
+
+const Map: React.FC<MapProps> = ({ equipments }) => {
   return (
     <MapContainer
       center={[-19, -46]}
-      zoom={5}
-      style={{ height: "100%", width: "60%" }}
+      zoom={11}
+      style={{ height: "100%", width: "100%" }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      <CustomMarker
-        position={[-19.151801, -46.00775]}
-        name="Equipamento CA-0001"
-        stateName={StateName.OPERATING}
-      />
+
+      {equipments.map((equipment) => (
+        <EquipmentMarker
+          key={equipment.id}
+          name={equipment.name}
+          model={equipment.model}
+          state={equipment.state}
+          color={equipment.color}
+          position={equipment.position}
+        />
+      ))}
     </MapContainer>
   );
 };

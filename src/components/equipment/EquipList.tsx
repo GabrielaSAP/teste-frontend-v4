@@ -1,9 +1,43 @@
 import React from "react";
 import { List, Badge, Avatar } from "antd";
-import { CheckCircleFilled } from "@ant-design/icons";
+import {
+  TruckOutlined,
+  ForkOutlined,
+  ToolOutlined,
+  CheckCircleFilled,
+  ExclamationCircleFilled,
+  CloseCircleFilled,
+} from "@ant-design/icons";
+import { Equipment, EquipmentStateName } from "../../types/equipment";
 
 type EquipListProps = {
   equipments: Equipment[];
+};
+
+const getModelIcon = (model: string) => {
+  switch (model) {
+    case "Garra traçadora":
+      return <ForkOutlined style={{ color: "#000" }} />;
+    case "Harvester":
+      return <ToolOutlined style={{ color: "#000" }} />;
+    case "Caminhão de carga":
+      return <TruckOutlined style={{ color: "#000" }} />;
+    default:
+      return <Avatar icon="?" style={{ color: "#000" }} />;
+  }
+};
+
+const getStateIcon = (state: EquipmentStateName, color: string) => {
+  switch (state) {
+    case "Operando":
+      return <CheckCircleFilled style={{ color }} />;
+    case "Parado":
+      return <CloseCircleFilled style={{ color }} />;
+    case "Manutenção":
+      return <ExclamationCircleFilled style={{ color }} />;
+    default:
+      return null;
+  }
 };
 
 const EquipList: React.FC<EquipListProps> = ({ equipments }) => {
@@ -11,18 +45,17 @@ const EquipList: React.FC<EquipListProps> = ({ equipments }) => {
     <List
       itemLayout="horizontal"
       dataSource={equipments}
-      renderItem={(item, index) => (
+      renderItem={(item) => (
         <List.Item>
           <a className="list-item" href="/">
             <List.Item.Meta
               avatar={
-                <Badge
-                  count={<CheckCircleFilled style={{ color: "#2ecc71" }} />} //TODO: fazer os tipos de estados dinamicamente
-                >
+                <Badge count={getStateIcon(item.state, item.color)}>
                   <Avatar
-                    src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`}
+                    icon={getModelIcon(item.model)}
                     shape="circle"
                     size="large"
+                    style={{ backgroundColor: "#f0f0f0" }}
                   />
                 </Badge>
               }

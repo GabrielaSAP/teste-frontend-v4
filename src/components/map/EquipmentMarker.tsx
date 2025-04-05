@@ -1,0 +1,68 @@
+import React from "react";
+import { Marker, Popup } from "react-leaflet";
+import { Flex, Card, Avatar } from "antd";
+import ModelIcon from "../shared/ModelIcon";
+import StateIcon from "../shared/StateIcon";
+import { EquipmentStateName } from "../../types/equipment";
+import getEquipmentMapIcon from "../../utils/getEquipmentMapIcon";
+
+interface EquipmentMarkerProps {
+  name: string;
+  model: string;
+  state: EquipmentStateName;
+  color: string;
+  position: [number, number];
+}
+
+const EquipmentMarker: React.FC<EquipmentMarkerProps> = ({
+  name,
+  model,
+  state,
+  color,
+  position,
+}) => {
+  const icon = getEquipmentMapIcon({ model, state, color });
+  return (
+    <Marker position={position} icon={icon}>
+      <Popup>
+        <Flex gap="middle" align="start" vertical>
+          <Card size="small" style={{ minWidth: 300 }}>
+            <Card.Meta
+              avatar={
+                <Avatar
+                  icon={<ModelIcon model={model} />}
+                  style={{ backgroundColor: "#f0f0f0" }}
+                />
+              }
+              title={name}
+              description={
+                <>
+                  <p>
+                    <b>Status:</b>{" "}
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 4,
+                      }}
+                    >
+                      <StateIcon state={state} color={color} /> {state}
+                    </span>
+                  </p>
+                  <p>
+                    <b>Posição:</b> {position[0]}, {position[1]}
+                  </p>
+                  <p>
+                    <b>Última atualização:</b> Data xx/yy - hh:mm
+                  </p>
+                </>
+              }
+            />
+          </Card>
+        </Flex>
+      </Popup>
+    </Marker>
+  );
+};
+
+export default EquipmentMarker;

@@ -120,7 +120,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
         </div>
-        <Map />
+        <Map equipments={equipments} />
       </div>
     </main>
   );
