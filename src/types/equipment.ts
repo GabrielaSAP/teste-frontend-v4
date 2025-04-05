@@ -3,11 +3,11 @@ export type EquipmentStateName = "Operando" | "Parado" | "Manutenção";
 export interface Equipment {
   id: string;
   name: string;
-  model: string;
   state: EquipmentStateName;
-  position: [number, number];
+  model: string;
   color: string;
-  hourlyEarnings: number;
-  statusHistory: { date: string; state: EquipmentStateName }[];
-  positionHistory: { date: string; position: [number, number] }[];
+  position: [number, number];
+  hourlyEarnings: number | { equipmentStateId: string; value: number }[];
+  statusHistory?: { date: string; state: EquipmentStateName }[];
+  positionHistory?: { date: string; lat: number; lon: number }[];
 }

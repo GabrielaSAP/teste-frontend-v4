@@ -2,22 +2,15 @@ import React from "react";
 import { List, Badge, Avatar } from "antd";
 import { CheckCircleFilled } from "@ant-design/icons";
 
-type Equipment = {
-  title: string;
-  state: string;
-  position: [number, number];
-  model: string;
+type EquipListProps = {
+  equipments: Equipment[];
 };
 
-type Props = {
-  data: Equipment[];
-};
-
-const EquipList: React.FC<Props> = ({ data }) => {
+const EquipList: React.FC<EquipListProps> = ({ equipments }) => {
   return (
     <List
       itemLayout="horizontal"
-      dataSource={data}
+      dataSource={equipments}
       renderItem={(item, index) => (
         <List.Item>
           <a className="list-item" href="/">
@@ -33,7 +26,7 @@ const EquipList: React.FC<Props> = ({ data }) => {
                   />
                 </Badge>
               }
-              title={item.title}
+              title={item.name}
               description={
                 <span>
                   <b>Estado:</b> {item.state}

@@ -13,6 +13,8 @@ import {
   ExclamationCircleFilled,
   CloseCircleFilled,
 } from "@ant-design/icons";
+import EquipList from "../components/equipment/EquipList";
+import { getEquipmentsMerged } from "../utils/mergeMocks";
 
 const items: DescriptionsProps["items"] = [
   {
@@ -59,43 +61,10 @@ const data = [
   },
 ];
 
-const EquipList: React.FC = () => (
-  <List
-    itemLayout="horizontal"
-    dataSource={data}
-    renderItem={(item, index) => (
-      <List.Item>
-        <a href="https://ant.design" className="list-item">
-          <List.Item.Meta
-            avatar={
-              <Badge count={<CheckCircleFilled style={{ color: "#2ecc71" }} />}>
-                <Avatar
-                  src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`}
-                  shape="circle"
-                  size="large"
-                />
-              </Badge>
-            }
-            title={item.title}
-            description={
-              <span>
-                <b>Estado:</b> {item.state}
-                <br />
-                <b>Modelo:</b> {item.model}
-                <br />
-                <b>Posição atual:</b> {item.position[0]} {item.position[1]}
-              </span>
-            }
-          />
-        </a>
-      </List.Item>
-    )}
-  />
-);
-
 const EquipDetail: React.FC = () => <Descriptions bordered items={items} />;
 
 const HomePage: React.FC = () => {
+  const equipments = getEquipmentsMerged();
   return (
     <main className="main-container">
       {/* <h1>Mapa de equipamentos hihi</h1> */}
@@ -107,10 +76,17 @@ const HomePage: React.FC = () => {
               Clique em um equipamento para ver mais informações sobre ele.
             </span>
           </div>
-          <div style={{ display: "flex", paddingTop: "1em", height: "100%" }}>
+          <div
+            style={{
+              display: "flex",
+              paddingTop: "1em",
+              height: "100%",
+              overflow: "hidden",
+            }}
+          >
             <div className="equipments-listed">
               <div className="equipments-list">
-                <EquipList />
+                <EquipList equipments={equipments} />
               </div>
             </div>
             <div className="equipments-detailed">
