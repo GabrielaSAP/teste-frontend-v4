@@ -6,9 +6,15 @@ import "leaflet/dist/leaflet.css";
 
 type MapProps = {
   equipments: Equipment[];
+  selectedEquipment: Equipment | null;
+  onSelect: (equipment: Equipment) => void;
 };
 
-const Map: React.FC<MapProps> = ({ equipments }) => {
+const Map: React.FC<MapProps> = ({
+  equipments,
+  selectedEquipment,
+  onSelect,
+}) => {
   return (
     <MapContainer
       center={[-19, -46]}
@@ -23,11 +29,9 @@ const Map: React.FC<MapProps> = ({ equipments }) => {
       {equipments.map((equipment) => (
         <EquipmentMarker
           key={equipment.id}
-          name={equipment.name}
-          model={equipment.model}
-          state={equipment.state}
-          color={equipment.color}
-          position={equipment.position}
+          equipment={equipment}
+          isSelected={selectedEquipment?.id === equipment.id}
+          onSelect={onSelect}
         />
       ))}
     </MapContainer>

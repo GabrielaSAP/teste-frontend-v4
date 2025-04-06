@@ -7,12 +7,17 @@ interface GetEquipmentMapIconProps {
   model: string;
   state: EquipmentStateName;
   color: string;
+  isSelected?: boolean;
 }
 
-const getEquipmentMapIcon = ({ model, color }: GetEquipmentMapIconProps) => {
+const getEquipmentMapIcon = ({
+  model,
+  color,
+  isSelected,
+}: GetEquipmentMapIconProps) => {
   return divIcon({
     className: "",
-    html: `<div class="marker-wrapper" style="background-color: ${color}">${renderToString(<ModelIcon model={model} />)}</div>`,
+    html: `<div class="marker-wrapper ${isSelected ? "selected" : ""}" style="background-color: ${color}">${renderToString(<ModelIcon model={model} />)}</div>`,
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [0, -32],

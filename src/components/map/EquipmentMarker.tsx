@@ -3,27 +3,31 @@ import { Marker, Popup } from "react-leaflet";
 import { Flex, Card, Avatar } from "antd";
 import ModelIcon from "../shared/ModelIcon";
 import StateIcon from "../shared/StateIcon";
-import { EquipmentStateName } from "../../types/equipment";
+import { Equipment, EquipmentStateName } from "../../types/equipment";
 import getEquipmentMapIcon from "../../utils/getEquipmentMapIcon";
 
 interface EquipmentMarkerProps {
-  name: string;
-  model: string;
-  state: EquipmentStateName;
-  color: string;
-  position: [number, number];
+  equipment: Equipment;
+  isSelected: boolean;
+  onSelect: (equipment: Equipment) => void;
 }
 
 const EquipmentMarker: React.FC<EquipmentMarkerProps> = ({
-  name,
-  model,
-  state,
-  color,
-  position,
+  equipment,
+  isSelected,
+  onSelect,
 }) => {
-  const icon = getEquipmentMapIcon({ model, state, color });
+  const { name, model, state, color, position } = equipment;
+  const icon = getEquipmentMapIcon({ model, state, color, isSelected });
+
   return (
-    <Marker position={position} icon={icon}>
+    <Marker
+      position={position}
+      icon={icon}
+      eventHandlers={{
+        click: () => onSelect(equipment),
+      }}
+    >
       <Popup>
         <Flex gap="middle" align="start" vertical>
           <Card size="small" style={{ minWidth: 300 }}>

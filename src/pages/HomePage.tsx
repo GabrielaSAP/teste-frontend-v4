@@ -13,15 +13,12 @@ const HomePage: React.FC = () => {
 
   return (
     <main className="main-container">
-      {/* <h1>Mapa de equipamentos hihi</h1> */}
+      <h1>Mapa de equipamentos</h1>
       <div className="equipments-container">
         <div className="side-bar">
-          <div style={{ padding: "1em 0", borderBottom: "1px solid #e8e8e8" }}>
-            <h2>Mapa de Equipamentos</h2>
-            <span>
-              Clique em um equipamento para ver mais informações sobre ele.
-            </span>
-          </div>
+          {/* <div style={{ padding: "1em 0", borderBottom: "1px solid #e8e8e8" }}>
+            <h2 style={{ marginBottom: "0px" }}>Mapa de Equipamentos</h2>
+          </div> */}
           <div
             style={{
               display: "flex",
@@ -42,7 +39,11 @@ const HomePage: React.FC = () => {
             <EquipDetail equipment={selectedEquipment} />
           </div>
         </div>
-        <Map equipments={equipments} />
+        <Map
+          equipments={equipments}
+          onSelect={setSelectedEquipment}
+          selectedEquipment={selectedEquipment}
+        />
       </div>
     </main>
   );
