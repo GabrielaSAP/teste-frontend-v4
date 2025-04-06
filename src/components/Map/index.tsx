@@ -1,6 +1,6 @@
 import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
-import EquipmentMarker from "./EquipmentMarker";
+import EquipmentMarker from "./Marker";
 import { Equipment } from "../../types/equipment";
 import "leaflet/dist/leaflet.css";
 
