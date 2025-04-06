@@ -29,6 +29,9 @@ export function getEquipmentsMerged() {
         ? ([lastPosition.lat, lastPosition.lon] as [number, number])
         : ([0, 0] as [number, number]),
       hourlyEarnings: model?.hourlyEarnings || 0,
+      stateHistory: stateHist?.states || [],
+      positionHistory: posHist?.positions || [],
+      equipmentStates: mockEquipmentState,
     };
   });
 }

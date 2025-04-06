@@ -3,7 +3,7 @@ import { Marker, Popup } from "react-leaflet";
 import { Flex, Card, Avatar } from "antd";
 import ModelIcon from "../shared/ModelIcon";
 import StateIcon from "../shared/StateIcon";
-import { Equipment, EquipmentStateName } from "../../types/equipment";
+import { Equipment } from "../../types/equipment";
 import getEquipmentMapIcon from "../../utils/getEquipmentMapIcon";
 
 interface EquipmentMarkerProps {

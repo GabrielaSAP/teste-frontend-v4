@@ -1,4 +1,4 @@
-export type EquipmentPositonHistory = {
+export type EquipmentPositionHistory = {
   equipmentId: string;
   positions: {
     date: string;
@@ -7,7 +7,7 @@ export type EquipmentPositonHistory = {
   }[];
 };
 
-export const mockEquipmentPositionHistory: EquipmentPositonHistory[] = [
+export const mockEquipmentPositionHistory: EquipmentPositionHistory[] = [
   {
     equipmentId: "a7c53eb1-4f5e-4eba-9764-ad205d0891f9",
     positions: [
