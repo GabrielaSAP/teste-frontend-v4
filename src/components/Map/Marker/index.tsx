@@ -1,8 +1,9 @@
-import React from "react";
-import { Marker, Popup } from "react-leaflet";
+import React, { useEffect, useRef } from "react";
+import { Marker, Popup, useMap } from "react-leaflet";
 import { Equipment } from "../../../types/equipment";
 import getEquipmentMapIcon from "../../../utils/map";
 import MarkerPopup from "./MarkerPopup";
+import L from "leaflet";
 
 interface EquipmentMarkerProps {
   equipment: Equipment;
@@ -22,12 +23,27 @@ const EquipmentMarker: React.FC<EquipmentMarkerProps> = ({
     isSelected,
   });
 
+  const markerRef = useRef<L.Marker | null>(null);
+  const map = useMap();
+
+  useEffect(() => {
+    if (isSelected && markerRef.current) {
+      markerRef.current.openPopup();
+      map.flyTo(equipment.position, map.getZoom());
+    }
+  }, [isSelected]);
+
   return (
     <Marker
       position={equipment.position}
       icon={icon}
       eventHandlers={{
         click: () => onSelect(equipment),
+      }}
+      ref={(ref) => {
+        if (ref) {
+          markerRef.current = ref;
+        }
       }}
     >
       <Popup>

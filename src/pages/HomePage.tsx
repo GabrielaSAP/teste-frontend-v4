@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Map from "../components/map/Map";
-import EquipDetail from "../components/Equipment/EquipDetail";
-import EquipList from "../components/Equipment/Equiplist/EquipList";
+import Map from "../components/Map";
+import EquipDetail from "../components/Equipment/EquipDetail/index";
+import EquipList from "../components/Equipment/EquipList/index";
 import { getEquipmentsMerged } from "../utils/mergeMocks";
 import { Equipment } from "../types/equipment";
 
