@@ -1,4 +1,4 @@
-import { EquipmentStateName } from "../types/equipment";
+import { EquipmentStateName } from "../../src/types/equipment";
 
 export type EquipmentState = {
   id: string;

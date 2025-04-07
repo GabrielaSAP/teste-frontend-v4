@@ -1,6 +1,6 @@
-import { EquipmentStateHistory } from "../data/mockEquipmentStateHistory";
-import { EquipmentPositionHistory } from "../data/mockEquipmentPositionHistory";
-import { EquipmentState } from "../data/mockEquipmentState";
+import { EquipmentStateHistory } from "../../public/data/mockEquipmentStateHistory";
+import { EquipmentPositionHistory } from "../../public/data/mockEquipmentPositionHistory";
+import { EquipmentState } from "../../public/data/mockEquipmentState";
 
 export type EquipmentStateName = "Operando" | "Parado" | "Manutenção";
 

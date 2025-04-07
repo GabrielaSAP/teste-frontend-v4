@@ -1,9 +1,9 @@
-import { mockEquipments } from "../data/mockEquipment";
-import { mockEquipmentPositionHistory } from "../data/mockEquipmentPositionHistory";
-import { mockEquipmentStateHistory } from "../data/mockEquipmentStateHistory";
+import { mockEquipments } from "../../public/data/mockEquipment";
+import { mockEquipmentPositionHistory } from "../../public/data/mockEquipmentPositionHistory";
+import { mockEquipmentStateHistory } from "../../public/data/mockEquipmentStateHistory";
 import { EquipmentStateName } from "../types/equipment";
-import { mockEquipmentModels } from "./../data/mockEquipmentModel";
-import { mockEquipmentState } from "./../data/mockEquipmentState";
+import { mockEquipmentModels } from "../../public/data/mockEquipmentModel";
+import { mockEquipmentState } from "../../public/data/mockEquipmentState";
 
 export function getEquipmentsMerged() {
   return mockEquipments.map((eq) => {
