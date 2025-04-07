@@ -79,14 +79,13 @@ Ainda não implementadas, mas planejadas:
 - 🔍 Pesquisa por equipamento
 - 📈 Cálculo de produtividade e ganho por equipamento
 - 🧪 Testes unitários e acessibilidade
-​- 📋​ Segundo modo de visualização (por tabela)
+  ​- 📋​ Segundo modo de visualização (por tabela)
 
 ## 📝 Notas da Desenvolvedora
+
 Confesso que me diverti demais implementado as interações com o mapa (nunca havia trabalhado com o Leaflet), que acabei ficando sem tempo de modularizar o CSS do `global.less` para cada componente — assim como mantive o meu terror chamado **style inline** em quase todos os componentes.
 
 Também esqueci de fazer a responsividade básica para funcionar em dispositivos móveis, apesar de já ter planejado (em teoria) o funcionamento no mobile.
-
-Ademais, vou compartilhar como foi o planejamento inicial do projeto para estudo de caso, além da linha de raciocínio adotada por mim durante o desenvolvimento do projeto:
 
 ## 🤝 Contribuindo
 
