@@ -3,6 +3,7 @@ import { Flex, Card, Avatar } from "antd";
 import ModelIcon from "../../shared/ModelIcon";
 import StateIcon from "../../shared/StateIcon";
 import { Equipment } from "../../../types/equipment";
+import { getLastUpdateTimestamp } from "../../../utils/equipment";
 
 type Props = {
   equipment: Equipment;
@@ -10,7 +11,7 @@ type Props = {
 
 const MarkerPopup: React.FC<Props> = ({ equipment }) => {
   const { name, model, state, color, position } = equipment;
-
+  const lastUpdated = getLastUpdateTimestamp(equipment);
   return (
     <Flex gap="middle" align="start" vertical>
       <Card size="small" style={{ minWidth: 300 }}>
@@ -40,7 +41,7 @@ const MarkerPopup: React.FC<Props> = ({ equipment }) => {
                 <b>Posição:</b> {position[0]}, {position[1]}
               </p>
               <p>
-                <b>Última atualização:</b> Data xx/yy - hh:mm
+                <b>Última atualização:</b> {lastUpdated || "Desconhecida"}
               </p>
             </>
           }

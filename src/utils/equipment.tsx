@@ -1,6 +1,32 @@
 import { Equipment } from "../types/equipment";
 import { EnvironmentOutlined, SyncOutlined } from "@ant-design/icons";
 
+// Aqui começa a parte do EquipList
+export const getLastUpdateTimestamp = (equipment: Equipment): string | null => {
+  const lastState = equipment.stateHistory?.[equipment.stateHistory.length - 1];
+  const lastPosition =
+    equipment.positionHistory?.[equipment.positionHistory.length - 1];
+
+  const stateTime = lastState ? new Date(lastState.date).getTime() : 0;
+  const positionTime = lastPosition ? new Date(lastPosition.date).getTime() : 0;
+
+  if (!stateTime && !positionTime) return null;
+
+  const latest = new Date(Math.max(stateTime, positionTime));
+
+  const date = latest.toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+  });
+
+  const time = latest.toLocaleTimeString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return `${date} às ${time}`;
+};
+
 // Aqui começa a parte do InfoSection
 export function formatCurrency(value: number): string {
   return new Intl.NumberFormat("pt-BR", {
