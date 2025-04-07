@@ -47,16 +47,16 @@ Ou acessar a versão online (deploy no Vercel):
 
 ## 🗺️ Funcionalidades implementadas
 
-✅ Exibir os equipamentos no mapa com suas **posições mais recentes**
-✅ Visualizar o **estado atual** de cada equipamento no mapa via **tooltip personalizada**
-✅ **Histórico de posições** (trajetória) desenhada no mapa
-✅ Acessar o **histórico de estados e posições** ao clicar em um equipamento
-✅ Ícones distintos para cada **modelo de equipamento** (Caminhão de Carga, Harvester, Garra Traçadora)
-✅ Diferenciação visual de estado com **badge colorida** e ícones (cores extraídas dos dados do desafio):
+- ✅ Exibir os equipamentos no mapa com suas **posições mais recentes**
+- ✅ Visualizar o **estado atual** de cada equipamento no mapa via **tooltip personalizada**
+- ✅ **Histórico de posições** (trajetória) desenhada no mapa
+- ✅ Acessar o **histórico de estados e posições** ao clicar em um equipamento
+- ✅ Ícones distintos para cada **modelo de equipamento** (Caminhão de Carga, Harvester, Garra Traçadora)
+- ✅ Diferenciação visual de estado com **badge colorida** e ícones (cores extraídas dos dados do desafio):
 
-🟢 Operando
-🔴 Manutenção
-🟠 Parado
+- - 🟢 Operando
+- - 🔴 Manutenção
+- - 🟠 Parado
 
 ## 📁 Estrutura dos dados
 
@@ -64,7 +64,7 @@ Os arquivos `.json` fornecidos foram utilizados como **base de dados**, porém, 
 
 ## 🧠 Decisões técnicas
 
-- A biblioteca React Leaflet foi escolhida por sua leveza e flexibilidade para visualizações geográficas.
+- A biblioteca **React Leaflet** foi escolhida por sua leveza e flexibilidade para visualizações geográficas.
 - Foi criado uma função `getEquipmentsMerged` localizado na pasta `utils` com o propósito de unificar todos os dados em um único elemento `equipment`, para facilitar a manipulação dos dados.
 - O Ant Design foi utilizado para construção de componentes ricos e consistentes, como `Card`, `Badge`, `Tooltip`, `Avatar`, entre outros.
 - O projeto foi estruturado em **componentes reutilizáveis** com tipagem explícita via TypeScript.
@@ -74,12 +74,19 @@ Os arquivos `.json` fornecidos foram utilizados como **base de dados**, porém, 
 
 Ainda não implementadas, mas planejadas:
 
-📱 Responsividade
-📌 Filtro por modelo ou estado
-🔍 Pesquisa por equipamento
-📈 Cálculo de produtividade e ganho por equipamento
-🧪 Testes unitários e acessibilidade
-​📋​ Segundo modo de visualização (por tabela)
+- 📱 Responsividade
+- 📌 Filtro por modelo ou estado
+- 🔍 Pesquisa por equipamento
+- 📈 Cálculo de produtividade e ganho por equipamento
+- 🧪 Testes unitários e acessibilidade
+​- 📋​ Segundo modo de visualização (por tabela)
+
+## 📝 Notas da Desenvolvedora
+Confesso que me diverti demais implementado as interações com o mapa (nunca havia trabalhado com o Leaflet), que acabei ficando sem tempo de modularizar o CSS do `global.less` para cada componente — assim como mantive o meu terror chamado **style inline** em quase todos os componentes.
+
+Também esqueci de fazer a responsividade básica para funcionar em dispositivos móveis, apesar de já ter planejado (em teoria) o funcionamento no mobile.
+
+Ademais, vou compartilhar como foi o planejamento inicial do projeto para estudo de caso, além da linha de raciocínio adotada por mim durante o desenvolvimento do projeto:
 
 ## 🤝 Contribuindo
 
@@ -88,4 +95,4 @@ Este projeto foi desenvolvido como parte de um teste técnico e não está abert
 ## 👤 Desenvolvido por
 
 Gabriela Pestana
-💼 LinkedIn | 💻 GitHub
+💼 [LinkedIn](https://www.linkedin.com/in/gabriela-sa-pestana/) | 💻 [GitHub](https://github.com/GabrielaSAP)
