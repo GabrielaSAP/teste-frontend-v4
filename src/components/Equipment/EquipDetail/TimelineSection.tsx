@@ -6,9 +6,13 @@ import { getGroupedHistoryItems } from "../../../utils/equipment";
 
 interface TimelineSectionProps {
   equipment: Equipment;
+  setActivePathStartIndex: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const TimelineSection: React.FC<TimelineSectionProps> = ({ equipment }) => {
+const TimelineSection: React.FC<TimelineSectionProps> = ({
+  equipment,
+  setActivePathStartIndex,
+}) => {
   const grouped = getGroupedHistoryItems(equipment);
 
   const timelineItems = Object.entries(grouped)
@@ -23,7 +27,19 @@ const TimelineSection: React.FC<TimelineSectionProps> = ({ equipment }) => {
             {events
               .sort((a, b) => b.date.getTime() - a.date.getTime())
               .map((e, idx) => (
-                <li key={idx} style={{ color: e.color }}>
+                <li
+                  key={idx}
+                  style={{ color: e.color }}
+                  onMouseEnter={() => {
+                    if (
+                      e.type === "position" &&
+                      typeof e.positionIndex === "number"
+                    ) {
+                      setActivePathStartIndex(e.positionIndex);
+                    }
+                  }}
+                  onMouseLeave={() => setActivePathStartIndex(null)}
+                >
                   {e.icon} {e.text}{" "}
                   <em style={{ color: "#999" }}>({e.hourStr})</em>
                 </li>

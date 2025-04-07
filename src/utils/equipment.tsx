@@ -83,7 +83,7 @@ export function getGroupedHistoryItems(equipment: Equipment) {
         icon: <SyncOutlined />,
       };
     }),
-    ...positionHistory.map((p) => {
+    ...positionHistory.map((p, i) => {
       const date = new Date(p.date);
       return {
         type: "position" as const,
@@ -96,6 +96,7 @@ export function getGroupedHistoryItems(equipment: Equipment) {
         color: "blue",
         text: `Movido para: ${p.lat}, ${p.lon}`,
         icon: <EnvironmentOutlined />,
+        positionIndex: i,
       };
     }),
   ];

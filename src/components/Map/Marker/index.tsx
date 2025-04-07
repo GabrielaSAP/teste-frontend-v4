@@ -8,12 +8,14 @@ import L from "leaflet";
 interface EquipmentMarkerProps {
   equipment: Equipment;
   isSelected: boolean;
+  selectedEquipment: Equipment | null;
   onSelect: (equipment: Equipment) => void;
 }
 
 const EquipmentMarker: React.FC<EquipmentMarkerProps> = ({
   equipment,
   isSelected,
+  selectedEquipment,
   onSelect,
 }) => {
   const icon = getEquipmentMapIcon({
@@ -45,6 +47,7 @@ const EquipmentMarker: React.FC<EquipmentMarkerProps> = ({
           markerRef.current = ref;
         }
       }}
+      opacity={isSelected || !selectedEquipment ? 1 : 0.3}
     >
       <Popup>
         <MarkerPopup equipment={equipment} />

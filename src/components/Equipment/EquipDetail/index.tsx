@@ -5,9 +5,13 @@ import TimelineSection from "./TimelineSection";
 
 interface EquipDetailProps {
   equipment: Equipment | null;
+  setActivePathStartIndex: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const EquipDetail: React.FC<EquipDetailProps> = ({ equipment }) => {
+const EquipDetail: React.FC<EquipDetailProps> = ({
+  equipment,
+  setActivePathStartIndex,
+}) => {
   if (!equipment) {
     return (
       <div style={{ padding: "1em" }}>
@@ -21,7 +25,10 @@ const EquipDetail: React.FC<EquipDetailProps> = ({ equipment }) => {
       <h3>Equipamento {equipment.name}</h3>
       <InfoSection equipment={equipment} />
       <h3 style={{ paddingTop: "1em" }}>Histórico</h3>
-      <TimelineSection equipment={equipment} />
+      <TimelineSection
+        equipment={equipment}
+        setActivePathStartIndex={setActivePathStartIndex}
+      />
     </div>
   );
 };

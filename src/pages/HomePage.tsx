@@ -10,6 +10,9 @@ const HomePage: React.FC = () => {
   const [selectedEquipment, setSelectedEquipment] = useState<Equipment | null>(
     null,
   );
+  const [activePathStartIndex, setActivePathStartIndex] = useState<
+    number | null
+  >(null);
 
   return (
     <main className="main-container">
@@ -36,13 +39,17 @@ const HomePage: React.FC = () => {
                 />
               </div>
             </div>
-            <EquipDetail equipment={selectedEquipment} />
+            <EquipDetail
+              equipment={selectedEquipment}
+              setActivePathStartIndex={setActivePathStartIndex}
+            />
           </div>
         </div>
         <Map
           equipments={equipments}
           onSelect={setSelectedEquipment}
           selectedEquipment={selectedEquipment}
+          activePathStartIndex={activePathStartIndex}
         />
       </div>
     </main>
