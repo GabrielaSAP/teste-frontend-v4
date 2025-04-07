@@ -45,6 +45,13 @@ Acesse em http://localhost:5173
 Ou acessar a versão online (deploy no Vercel):
 👉 https://aiko-test-by-gabrielasap.vercel.app
 
+## 🎥 Demonstração do projeto
+
+No vídeo a seguir, apresento o processo criativo do projeto, desde os primeiros esboços de layout até a implementação final. Explico as decisões de design e desenvolvimento ao longo do caminho, além de demonstrar o sistema funcionando e comentar cada funcionalidade implementada.
+
+👉 [Assista à demonstração no YouTube](https://youtu.be/b_9DggLwmZ8)
+
+
 ## 🗺️ Funcionalidades implementadas
 
 - ✅ Exibir os equipamentos no mapa com suas **posições mais recentes**
@@ -79,7 +86,7 @@ Ainda não implementadas, mas planejadas:
 - 🔍 Pesquisa por equipamento
 - 📈 Cálculo de produtividade e ganho por equipamento
 - 🧪 Testes unitários e acessibilidade
-  ​- 📋​ Segundo modo de visualização (por tabela)
+​- 📋​ Segundo modo de visualização (por tabela)
 
 ## 📝 Notas da Desenvolvedora
 
